@@ -2,7 +2,7 @@ import memes from "@/app/(data)/database";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
-  return NextResponse.json(memes);
+  return await NextResponse.json(memes);
 }
 
 export async function POST(request: NextRequest) {

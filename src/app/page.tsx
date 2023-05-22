@@ -1,16 +1,17 @@
 import MemeDisplay from "./(components)/MemeDisplay";
 import { MemeEditor } from "./(components)/MemeEditor";
-import memeTemplates from "./(data)/memeTemplates";
 import { Meme, MemeTemplate } from "./(data)/types";
 
 export default async function Home() {
   const template = await fetch("http://localhost:3000/api/meme-templates");
   const templateData = (await template.json()) as MemeTemplate[];
+  console.log("🚀 ~ file: page.tsx:8 ~ Home ~ templateData:", templateData);
 
   const memesReq = await fetch("http://localhost:3000/api/memes", {
     cache: "no-cache",
   });
   const memes = (await memesReq.json()) as Meme[];
+  console.log("🚀 ~ file: page.tsx:14 ~ Home ~ memes:", memes);
 
   return (
     <main className="mx-auto max-w-5xl p-2">
