@@ -4,12 +4,12 @@ import { Meme, MemeTemplate } from "./(data)/types";
 
 export default async function Home() {
   const template = await fetch(
-    `http://${process.env.VERCEL_URL}/api/meme-templates`
+    `https://${process.env.VERCEL_URL}/api/meme-templates`
   );
   const templateData = (await template.json()) as MemeTemplate[];
   console.log("🚀 ~ file: page.tsx:8 ~ Home ~ templateData:", templateData);
 
-  const memesReq = await fetch(`http://${process.env.VERCEL_URL}/api/memes`, {
+  const memesReq = await fetch(`https://${process.env.VERCEL_URL}/api/memes`, {
     cache: "no-cache",
   });
   const memes = (await memesReq.json()) as Meme[];
