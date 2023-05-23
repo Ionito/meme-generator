@@ -1,7 +1,8 @@
 import memes from "@/app/(data)/database";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  console.log("🚀 ~ file: route.ts:5 ~ GET ~ request:", request);
   return NextResponse.json(memes);
 }
 
