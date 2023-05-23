@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { MemeTemplate } from "../(data)/types";
-import MemeDisplay from "./MemeDisplay";
+import { MemeDisplay } from "./MemeDisplay";
 import { ChangeEventHandler, useTransition } from "react";
 import { useRouter } from "next/navigation";
 

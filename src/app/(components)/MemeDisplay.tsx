@@ -10,7 +10,7 @@ type Props = {
   template: MemeTemplate;
   values: Record<string, string>;
 };
-const MemeDisplay = ({ template, values }: Props) => {
+export const MemeDisplay = ({ template, values }: Props) => {
   const [memeRef, { width }] = useElementSize();
   const ratio = width / template.background.width;
 
@@ -29,7 +29,7 @@ const MemeDisplay = ({ template, values }: Props) => {
       {template.textareas.map((textarea, index) => (
         <div
           key={index}
-          className="absolute flex justify-center align-center items-center"
+          className="align-center absolute flex items-center justify-center"
           style={{
             top: textarea.top * ratio,
             left: textarea.left * ratio,
@@ -54,5 +54,3 @@ const MemeDisplay = ({ template, values }: Props) => {
     </div>
   );
 };
-
-export default MemeDisplay;
