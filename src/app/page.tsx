@@ -6,14 +6,14 @@ export default async function Home() {
   const template = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/meme-templates`
   );
-  const templateData = (await template.json()) as MemeTemplate[];
+
+  const templateData: MemeTemplate[] | null = template.ok? await template.json() : null;
   console.log("🚀 ~ file: page.tsx:8 ~ Home ~ templateData:", templateData);
 
-  const memesReq = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/memes`, {
-    cache: "no-store",
-  });
-  const memes = (await memesReq.json()) as Meme[];
-  console.log("🚀 ~ file: page.tsx:14 ~ Home ~ memes:", memes);
+  const memesReq = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/memes`);
+  const memes: Meme[] = memesReq.ok? await memesReq.json(): []
+
+  if(!templateData) return null
 
   return (
     <main className="mx-auto max-w-5xl p-2">
