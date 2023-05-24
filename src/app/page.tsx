@@ -4,16 +4,20 @@ import { Meme, MemeTemplate } from "./(data)/types";
 
 export default async function Home() {
   const template = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/meme-templates`, {cache:'no-cache'}
+    `${process.env.NEXT_PUBLIC_API_URL}/api/meme-templates`
   );
 
-  const templateData: MemeTemplate[] | null = template.ok? await template.json() : null;
+  const templateData: MemeTemplate[] | null = template.ok
+    ? await template.json()
+    : null;
   console.log("🚀 ~ file: page.tsx:8 ~ Home ~ templateData:", templateData);
 
-  const memesReq = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/memes`,{cache:'no-cache'});
-  const memes: Meme[] = memesReq.ok? await memesReq.json(): []
+  const memesReq = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/memes`, {
+    cache: "no-cache",
+  });
+  const memes: Meme[] = memesReq.ok ? await memesReq.json() : [];
 
-  if(!templateData) return null
+  if (!templateData) return null;
 
   return (
     <main className="mx-auto max-w-5xl p-2">
