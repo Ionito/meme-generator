@@ -38,7 +38,7 @@ export const MemeEditor = ({ templates }: Props): JSX.Element => {
     template: string;
     values: Record<string, string>;
   }) => {
-    await fetch("http://localhost:3000/api/memes", {
+    await fetch("/api/memes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

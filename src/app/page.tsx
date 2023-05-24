@@ -3,15 +3,11 @@ import { MemeEditor } from "./(components)/MemeEditor";
 import { Meme, MemeTemplate } from "./(data)/types";
 
 export default async function Home() {
-  const template = await fetch(
-    `http://${process.env.VERCEL_URL}/api/meme-templates`
-  );
+  const template = await fetch("/api/meme-templates");
   const templateData = (await template.json()) as MemeTemplate[];
-  console.log("🚀 ~ file: page.tsx:8 ~ Home ~ templateData:", templateData);
 
-  const memesReq = await fetch(`http://${process.env.VERCEL_URL}/api/memes`);
+  const memesReq = await fetch("/api/memes");
   const memes = (await memesReq.json()) as Meme[];
-  console.log("🚀 ~ file: page.tsx:14 ~ Home ~ memes:", memes);
 
   return (
     <main className="mx-auto max-w-5xl p-2">
